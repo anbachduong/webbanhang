@@ -1,0 +1,65 @@
+﻿@model DemoWebBanHang.Models.SanPham
+
+@{
+    ViewBag.Title = "Xóa sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Xóa sản phẩm</h4>
+
+<h3>Bạn có thực sự muốn xóa sản phẩm "@Model.TenSanPham" không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            <label>Tên sản phẩm</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSanPham)
+        </dd>
+
+        <dt>
+            <label>Mô tả</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            <label>Số lượng</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            <label>Hình ảnh</label>
+        </dt>
+
+        <dd>
+            <img src="@Model.HinhAnh" alt="@Model.TenSanPham" width="64" height="64" />
+        </dd>
+
+        <dt>
+            <label>Đơn giá</label>
+        </dt>
+
+        <dd>
+            @string.Format("{0:0,0 ₫}", Model.DonGia).Replace(",", ".")
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "ListProduct")
+        </div>
+    }
+</div>

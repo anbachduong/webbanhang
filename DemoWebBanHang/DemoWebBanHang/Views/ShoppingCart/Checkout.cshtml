@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("saveOrder", "ShoppingCart",FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <h4>Đặt hàng</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => Session["cart"])
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Họ tên</div>
+            <div class="col-md-10">
+                <input type="text" name="UserName" value="@Session["UserName"]" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="control-label col-md-2">Địa chỉ</div>
+            <div class="col-md-10">
+                <input type="text" name="DiaChi" value="@Session["DiaChi"]" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="control-label col-md-2">Số điện thoại</div>
+            <div class="col-md-10">
+                <input type="text" name="SoDienThoai" value="@Session["SoDienThoai"]" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="control-label col-md-2">Tổng tiền thanh toán</div>
+            <div class="col-md-10">
+                <input type="hidden" name="TongTien" value="@Session["TongTien"]" />
+                <label>@string.Format("{0:0,0 ₫}", Session["TongTien"]).Replace(",", ".")</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đặt hàng" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

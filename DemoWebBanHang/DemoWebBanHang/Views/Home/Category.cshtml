@@ -1,0 +1,18 @@
+﻿@model IEnumerable<DemoWebBanHang.Models.SanPham>
+
+@{
+    ViewBag.Title = "Danh mục";
+    ViewBag.Heading = "Danh sách các sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewBag.Heading</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+@foreach (var sanpham in Model)
+{
+    @Html.Partial("View", sanpham);
+}
+

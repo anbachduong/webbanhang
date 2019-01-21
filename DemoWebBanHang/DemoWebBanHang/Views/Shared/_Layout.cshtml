@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="~/Content/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Content/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="~/Content/vendor/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="~/Content/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/main.css" rel="stylesheet" />
+    @*Favicon website*@
+    <link rel="shortcut icon" type="image/png" href="~/Content/css/images/favicon.ico" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" rel="stylesheet" />
+    <link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css" rel="stylesheet" />
+    <link href="http://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; height:100px">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="\Home"><img width="100%" src="~/Content/images/Logo.png" /></a>
+                    </div>
+                        @{
+                            if (Session["cart"] == null)
+                            {
+                                <div class="shoppingcart"><img src="~/Content/css/images/Icon-shopping-cart.png" width="30" height="30" /></div>
+                                <span class="noti">0</span>
+                            }
+                            else
+                            {
+                                <div class="shoppingcart"><a href="@Url.Action("Index","ShoppingCart")"><img src="~/Content/css/images/Icon-shopping-cart.png" width="30" height="30" /></a></div>
+                                <span class="noti">@Session["CountCart"]</span>
+                            }
+                        }
+                        @{
+                            if (Session["UserID"] == null)
+                            {
+                                <div class="login">@Html.ActionLink("Đăng nhập", "Login", "Home") | @Html.ActionLink("Đăng ký", "DangKy", "Home")</div>
+                            }
+                            else
+                            {
+                                <div class="login"><text> Xin chào <b>@Session["UserName"].ToString()</b></text>    |   <a href="@Url.Action("Logout","Home")">Logout</a></div>
+                            }
+                        }
+</div>
+                <div class="search-box">
+                    @using (Html.BeginForm("AllProduct", "Home", FormMethod.Get))
+                    {
+                        <div class="sidebar-search">
+                            <input type="text" name="searching" class="search-box-text" placeholder="Nhập từ khóa tìm kiếm...">
+                            <input type="submit" class="button-1 search-box-button" value="Tìm kiếm">
+                            @*<span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>*@
+                            <!-- /input-group -->
+                        </div>
+                    }
+                </div>
+                <!-- /.navbar-header -->
+                <!-- /.navbar-top-links -->
+                <div class="navbar-default sidebar" role="navigation" style="margin-top:0">
+                    <div class="sidebar-nav navbar-collapse">
+                        @{Html.RenderAction("Menu", "Home");}
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+
+            <div id="page-wrapper">
+                <!-- /.row -->
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+    <div class="footer" style="padding:50px 20px 0 20px;background:#f56d00;color:#fff">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="\Home"><img src="~/Content/images/Logo.png" /></a>
+                    <p style="text-align:justify;font-style:italic;color:#fff">Là một công ty duy nhất trong các công ty nước ngoài hàng đầu tại Việt Nam có giấy phép tổng hợp về các dịch vụ logistic: dịch vụ vận chuyển trong nước và quốc tế bằng đường hàng không, đường biển và đường bộ, dịch vụ kho bãi (kho ngoại quan, CFS, kho thường ) . Cung cấp một dịch vụ chất lượng cao mà khách hàng có thể tin tưởng sử dụng.</p>
+                    <a href="facebook.com"><i class="fa fa-facebook fa-fw"></i></a>
+                    <a href="google.com"><i class="fa fa-google fa-fw"></i></a>
+                    <a href="twitter.com"><i class="fa fa-twitter fa-fw"></i></a>
+                    <a href="youtube.com"><i class="fa fa-youtube fa-fw"></i></a>
+                </div>
+                <div class="col-md-4">
+                    <h4>Thông tin liên hệ</h4>
+                    <p><i class="fa fa-location-arrow fa-fw"></i> B(361) HVKTQS Đ. Hoàng Quốc Việt, P. Nghĩa Đô, Q. Cầu Giấy, TP. Hà Nội.</p>
+                    <p><i class="fa fa-phone fa-fw"></i>Tel:(84-024) 38432088 – 38432082</p>
+                    <p><i class="fa fa-fax fa-fw"></i>Fax:(84-024) 38432038</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Fanpage</h4>
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fquanaotuixachdepgiare%2F&tabs=timeline&width=340&height=200&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1144473832371678" width="100%" height="200" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer" style="text-align:center">
+            © 2019. Bản quyền thuộc về... . Thiết kế website - An Dương
+        </div>
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    @*<script src="~/Content/vendor/jquery/jquery.min.js"></script>*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="~/Content/vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="~/Content/vendor/raphael/raphael.min.js"></script>
+    <script src="~/Content/vendor/morrisjs/morris.min.js"></script>
+    <script src="~/Content/data/morris-data.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Content/dist/js/sb-admin-2.js"></script>
+    @*Slick slider*@
+    <script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+    <script>
+        $(window).load(function () {
+            $('.product').slick({
+                infinite: true,
+                slidesToShow: 4,
+                autoplay: true,
+                autoplayspeed:2000,
+                nextArrow: '<a href="#" class="next-produce"><i class="fa fa-angle-double-right"></i></a>',
+                prevArrow: '<a href="#" class="prev-produce"><i class="fa fa-angle-double-left"></i></a>'
+            });
+        });
+        $(window).load(function () {
+            $('.promotion').slick({
+                infinite: true,
+                slidesToShow: 1,
+                autoplay: true,
+                autoplayspeed: 5000,
+                nextArrow: '<a href="#" class="next-slick" style="float:right"><i class="fa fa-angle-right"></i></a>',
+                prevArrow: '<a href="#" class="prev-slick" style="float:right"><i class="fa fa-angle-left"></i></a>'
+            });
+        });
+    </script>
+    @*<script src="~/Scripts/tinymce.min.js"></script>
+    <script>
+        tinymce.init({ selector: 'textarea' });
+    </script>*@
+</body>
+</html>

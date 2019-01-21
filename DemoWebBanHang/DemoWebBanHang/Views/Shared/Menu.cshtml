@@ -1,0 +1,33 @@
+﻿@model List<DemoWebBanHang.Models.DanhMuc>
+
+<div class="navigation">
+    <ul>
+        @foreach (var danhmuc in Model.Where(x => x.ParentID == null))
+        {
+            var child = Model.Where(x => x.ParentID == danhmuc.ID_DanhMuc);
+            var parentClass = child.Count() > 0;
+            <li class="has-sub">
+                @*@Html.ActionLink(@danhmuc.TenDanhMuc, "Category", "Home", new { CategoryID = @danhmuc.ID_DanhMuc }, null)*@
+                <a>@danhmuc.TenDanhMuc</a>
+                @*<a href="/Home/Category?CategoryID = @danhmuc.ID_DanhMuc">@danhmuc.TenDanhMuc<span class="fa arrow"></span></a>*@
+                @if (child.Count() > 0)
+                {
+                    <ul>
+                        @foreach (var childItem in child)
+                        {
+                            <li class="has-sub">@Html.ActionLink(@childItem.TenDanhMuc, "Category", "Home", new { CategoryID = @childItem.ID_DanhMuc }, null)</li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+        <li class="has-sub">
+            <a>Quản trị</a>
+            <ul>
+                <li class="has-sub">@Html.ActionLink("Danh sách sản phẩm", "ListProduct", "Home")</li>
+                <li class="has-sub">@Html.ActionLink("Danh sách đơn hàng", "OrderDetail", "ShoppingCart")</li>
+            </ul>
+        </li>
+        
+    </ul>
+</div>

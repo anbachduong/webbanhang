@@ -1,0 +1,428 @@
+﻿body {
+}
+a{
+    text-decoration:none;
+}
+a:hover{
+    color:#f26522;
+    text-decoration:none;
+}
+.login {
+    width: 100%;
+    background-image: url('images/Icon-Dang-ky-dang-nhap.png');
+    padding: 0px 38px 0 45px;
+    -ms-background-size: 12%;
+    background-size: 12%;
+    -ms-background-position: left center;
+    background-position: left center;
+    -ms-background-repeat: no-repeat;
+    padding: 10px 10px 10px 50px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    line-height: 16px;
+    font-size: 14px;
+    height: 34px;
+    color: #f26522;
+    width: 250px;
+    float:right;
+    margin-top:20px
+}
+.error{
+    font-size:10px;
+    color:red
+}
+.error1{
+    font-size:18px;
+    color:red
+}
+.product-name{
+    height:32px;
+    font-size:15px;
+    overflow:hidden;
+    font-weight:bold;
+}
+.table-login{
+    width:50%
+}
+.dropdown-btn{
+    position:absolute;
+    float:right
+}
+.img-hover:hover{
+    transform: scale(1.5);
+}
+.shoppingcart{
+    float:right;padding-right:20px;margin-top:20px
+}
+.noti{
+    width: 18px;
+    height: 18px;
+    background-color: #f26522;
+    position: absolute;
+    top: 15px;
+    right: 115px;
+    -ms-border-radius: 9px;
+    border-radius: 9px;
+    font-size: 11px;
+    color: #fff;
+    text-align: center;
+    line-height: 18px;
+}
+select{
+    height:30px;
+}
+.header{
+    margin-bottom:20px;
+}
+.view{
+    float:right;
+    font-size:15px;
+    font-weight:bold;
+    padding-right:30px;
+}
+/*Định dạng màu*/
+.price{
+    color:#f58220;
+    font-size:20px;
+    font-weight:bold;
+}
+.price-index{
+    color:#f58220;
+    font-size:12px;
+    font-weight:bold;
+}
+/*Design Breadcrumb*/
+.breadcrumb{
+    background: #fff;
+    padding: 4px;
+    height: 40px;
+    margin-bottom: 5px;
+    border-left: 5px solid #f26522;
+}
+.breadcrumb li{
+    display: inline-block;
+    min-height: 32px;
+    margin: 0 3px;
+    font-size: 15px;
+    line-height: 32px;
+    vertical-align: middle;
+}
+.breadcrumb ul{
+    padding-left:0;
+}
+.product-zoom:hover{
+    transform: scale(1.1);
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+}
+.current-item{
+    color:#f58220;
+}
+
+/*Menu*/
+.navigation {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  line-height: 1;
+}
+
+.navigation ul,
+.navigation ul li,
+.navigation ul ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width:252px;
+}
+
+.navigation ul {
+  position: relative;
+  z-index: 500;
+  float: left;
+}
+
+.navigation ul li {
+  float: left;
+  min-height: 0.05em;
+  line-height: 1em;
+  vertical-align: middle;
+  position: relative;
+}
+
+.navigation ul li.hover,
+.navigation ul li:hover {
+  position: relative;
+  z-index: 510;
+  cursor: default;
+}
+
+.navigation ul ul {
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  z-index: 520;
+  width: 100%;
+}
+
+.navigation ul ul li { float: none; }
+
+.navigation ul ul ul {
+  top: 0;
+  right: 0;
+}
+
+.navigation ul li:hover > ul { visibility: visible; transition: 1s;}
+
+.navigation ul ul {
+  top: 0;
+  left: 99%;
+}
+
+.navigation ul li { float: none; }
+
+.navigation ul ul { margin-top: 0.05em; }
+
+.navigation {
+}
+
+.navigation:before {
+  content: '';
+  display: block;
+}
+
+.navigation:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.navigation a {
+  display: block;
+  padding: 1em 1.3em;
+  color: #000;
+  text-decoration: none;
+}
+
+.navigation > ul { width: 252px; }
+
+.navigation ul ul { width: 252px; }
+
+.navigation > ul > li > a {
+  color: #000;
+  font-weight:bold;
+}
+
+.navigation > ul > li > a:hover { color: #fff; }
+
+.navigation > ul > li a:hover,
+.navigation > ul > li:hover a { background:#f26522;transition: 0.5s; }
+
+.navigation li { position: relative; }
+
+.navigation ul li.has-sub > a:after {
+  content: '';
+  position: absolute;
+  right: 1em;
+}
+
+.navigation ul ul li.first {
+  -webkit-border-radius: 0 3px 0 0;
+  -moz-border-radius: 0 3px 0 0;
+  border-radius: 0 3px 0 0;
+}
+
+.navigation ul ul li.last {
+  -webkit-border-radius: 0 0 3px 0;
+  -moz-border-radius: 0 0 3px 0;
+  border-radius: 0 0 3px 0;
+  border-bottom: 0;
+}
+
+.navigation ul ul {
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.navigation ul ul { border: 1px solid rgba(192,192,192,0.5) }
+
+.navigation ul ul a { color: #000; border-right: 1px solid rgba(192,192,192,0.5) }
+
+.navigation ul ul a:hover { color: #ffffff; }
+
+.navigation ul li { }
+
+.navigation ul ul li:hover > a {
+  color: #fff;
+}
+
+.navigation.align-right > ul > li > a {
+  border-left: 0.3em solid #34A65F;
+  border-right: none;
+}
+
+.navigation.align-right { float: right; }
+
+.navigation.align-right li { text-align: right; }
+
+.navigation.align-right ul li.has-sub > a:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  margin-top: -6px;
+}
+
+.navigation.align-right ul li.has-sub > a:after { content: none; }
+
+.navigation.align-right ul ul {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  z-index: 598;
+  width: 100%;
+}
+
+.navigation.align-right ul ul li.first {
+  -webkit-border-radius: 3px 0 0 0;
+  -moz-border-radius: 3px 0 0 0;
+  border-radius: 3px 0 0 0;
+}
+
+.navigation.align-right ul ul li.last {
+  -webkit-border-radius: 0 0 0 3px;
+  -moz-border-radius: 0 0 0 3px;
+  border-radius: 0 0 0 3px;
+}
+
+.navigation.align-right ul ul {
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+
+.search-box{
+    clear:both;
+    height: 70px;
+    background-color: #fff;
+    align-content:center !important;
+    width:100%;
+    background:#f26522;
+    margin-top:30px
+}
+
+.sidebar-search{
+    background: #fff;
+}
+input.search-box-text{
+    width: 910px !important;
+    height: 45px;
+    background-color: #fff;
+    position:absolute;
+    margin:12px 250px;
+    border:none;
+    border-radius:10px;
+    padding-left:20px;
+}
+input.search-box-button {
+    position:absolute;
+    margin: 0 0 0 15px;
+    padding-top: 2px;
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    margin: 0 5px;
+    border: none;
+    right:200px;
+    margin-top:22px;
+    background: #f74258 url('images/search-button.png') center no-repeat;
+    vertical-align: middle;
+    font-size: 0;
+    outline: 1px solid transparent;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+#page-wrapper{
+    clear:both;
+    margin-top:60px
+}
+.promotion img{
+    width:100%;
+}
+.next-slick{
+    position:absolute;
+    top:-45px;
+    right:0;
+    border:1px solid gray;
+    padding:3px 10px;
+    font-size:15px;
+    color:gray
+}
+.next-slick:hover{
+    border:1px solid #f26522;
+}
+.prev-slick{
+    position:absolute;
+    top:-45px;
+    right:35px;
+    font-size:15px;
+    color:gray;
+    border:1px solid gray;
+    padding:3px 10px;
+}
+.prev-slick:hover{
+    border:1px solid #f26522;
+}
+.next-produce{
+    display: block;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    background: rgba(244,164,96,.75);
+    right: -20px;
+    top: 50%;
+    transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    position: absolute;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
+    padding-top: 6px;
+    font-size: 24px;
+    border-radius: 5px 0 0 5px;
+}
+.next-produce:hover{
+    background: #F4A460;
+}
+.prev-produce{
+    display: block;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    background: rgba(244,164,96,.75);
+    left: -15px;
+    top: 50%;
+    transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    position: absolute;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
+    padding-top: 6px;
+    font-size: 24px;
+    border-radius: 0 5px 5px 0;
+}
+.prev-produce:hover{
+    background: #F4A460;
+}
+.sidebar{
+    position:relative;
+}

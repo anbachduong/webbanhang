@@ -1,0 +1,14 @@
+﻿@model List<DemoWebBanHang.Models.SanPham>
+@{
+    ViewBag.Title = "Tất cả sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tất cả sản phẩm</h2>
+<div class="allproduct">
+    @foreach (var sanpham in Model)
+    {
+        @Html.Partial("View", sanpham);
+    }
+</div>
+

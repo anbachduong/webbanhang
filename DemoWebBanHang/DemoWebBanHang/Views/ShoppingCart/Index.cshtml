@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using DemoWebBanHang.Models;
+@using (Html.BeginForm("Update", "ShoppingCart", FormMethod.Post))
+{
+    <table class="table table-hover text-centered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Mã SP</th>
+                <th>Hình ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                double tongTien = 0;
+            }
+            @foreach (var item in (List<Item>)Session["cart"])
+            {
+                tongTien = (tongTien + ((double)item.Pr.DonGia * item.Quantity));
+                <tr>
+                    <td>@item.Pr.ID_SanPham</td>
+                    <td><img src="@item.Pr.HinhAnh" title="@item.Pr.TenSanPham" width="100" height="100" /></td>
+                    <td>@item.Pr.TenSanPham</td>
+                    <td>@string.Format("{0:0,0 ₫}", item.Pr.DonGia).Replace(",", ".")</td>
+                    <td align="center"><input type="text" name="quantity" value="@item.Quantity" style="width:30px;text-align:center"/></td>
+                    <td>@string.Format("{0:0,0 ₫}", (item.Pr.DonGia * item.Quantity)).Replace(",", ".")</td>
+                    <td><a class="btn btn-danger btn-sm" href="@Url.Action("Delete", "ShoppingCart", new { id = item.Pr.ID_SanPham })">Xóa</a></td>
+                </tr>
+                Session["TongTien"] = tongTien;
+            }
+            <tr>
+                <td align="right" colspan="5"><input type="submit" class="btn btn-success" value="Cập nhật số lượng" /></td>
+                <td align="right" colspan="2">Tổng tiền: <b>@string.Format("{0:0,0 ₫}", tongTien).Replace(",", ".")</b></td>
+            </tr>
+        </tbody>
+    </table>
+                }
+
+
+@Html.ActionLink("Tiếp tục mua hàng", "Index", "Home")
+
+@{
+    if (Session["UserID"] == null)
+    {
+        <p>Bạn vui lòng @Html.ActionLink("Đăng nhập", "Login", "Home") để thanh toán</p>
+    }
+    else
+    {
+        @Html.ActionLink("Đặt hàng", "Checkout", "ShoppingCart", htmlAttributes: new { @class = "btn btn-primary" })
+    }
+}
+

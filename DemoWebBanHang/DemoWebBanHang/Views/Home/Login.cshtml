@@ -1,0 +1,52 @@
+﻿@model DemoWebBanHang.Models.KhachHang
+
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <fieldset>
+        <legend style="text-align:center">Đăng nhập</legend>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table align="center" class="table table-login">
+            <tr>
+                <td><label>Tài khoản: </label></td>
+                <td>@Html.TextBoxFor(a => a.TaiKhoan)</td>
+                <td><span class="error">@Html.ValidationMessageFor(a => a.TaiKhoan)</span></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Mật khẩu: </label>
+                </td>
+                <td>
+                    @Html.PasswordFor(a => a.MatKhau)
+                </td>
+                <td>
+                    <span class="error">@Html.ValidationMessageFor(a => a.MatKhau)</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="error">@Html.DisplayFor(a => a.LoginErrorMesseger)</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                    <a class="btn btn-primary" href="@Url.Action("DangKy","Home")">Đăng ký</a>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}  
+

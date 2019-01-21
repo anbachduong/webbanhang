@@ -1,0 +1,57 @@
+﻿@model DemoWebBanHang.Models.SanPham
+@{
+    ViewBag.Title = Model.TenSanPham;
+    ViewBag.Heading = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb">
+    <ul>
+
+        <li>
+            <span>
+                <a href="/Home" itemprop="url">
+                    <span itemprop="title">Trang chủ</span>
+                </a>
+            </span>
+            <span class="delimiter">/</span>
+        </li>
+        <li>
+            <span>
+                @Html.ActionLink(Model.DanhMuc.TenDanhMuc, "Category", "Home", new { CategoryID = Model.ID_DanhMuc }, null)
+            </span>
+            <span class="delimiter">/</span>
+        </li>
+        <li>
+            <strong class="current-item">@Model.TenSanPham</strong>
+
+
+        </li>
+    </ul>
+</div>
+<div class="col-md-4">
+    <div class="thumbnail tiles">
+        <img src="@Model.HinhAnh" alt="@Model.TenSanPham">
+    </div>
+</div>
+<div class="col-md-8">
+    <h3>@Model.TenSanPham</h3><br />
+    <br />
+    Mã sản phẩm: @Model.ID_SanPham<br />
+    Số lượng còn: @Model.SoLuong<br /><br />
+    <span class="price">@string.Format("{0:0,0 ₫}", Model.DonGia).Replace(",", ".")</span><br /><br />
+    @{
+        if (Model.SoLuong <= 0)
+        {
+            <div class="error1">Xin lỗi! Sản phẩm của chúng tôi đã hết hàng</div>
+        }
+        else
+        {
+            <a class="btn btn-success btn-sm" href="@Url.Action("OrderNow", "ShoppingCart", new { id = Model.ID_SanPham })"> <span class="glyphicon glyphicon-shopping-cart"></span>  Thêm vào giỏ </a>
+        }
+    }
+</div>
+<div class="col-md-12">
+    <h2>Mô tả sản phẩm</h2>
+    <p>@Model.MoTa</p>
+</div>
+

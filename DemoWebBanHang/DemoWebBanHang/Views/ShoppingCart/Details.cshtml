@@ -1,0 +1,83 @@
+﻿@model DemoWebBanHang.Models.HoaDon
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin hóa đơn</h2>
+
+<div>
+    <h4>Hóa đơn số @Html.DisplayFor(model => model.ID_HoaDon)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên hóa đơn
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenHoaDon)
+        </dd>
+
+        <dt>
+            Ngày thanh toán
+        </dt>
+
+        <dd>
+            @String.Format("{0:MM/dd/yyy}", Model.NgayThanhToan)
+        </dd>
+
+        <dt>
+            Họ tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+
+        <dt>
+            Tổng tiền thanh toán
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTien)
+        </dd>
+
+    </dl>
+</div>
+<table class="table">
+    <tr>
+        <th>Hình ảnh</th>
+        <th>Tên sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+    </tr>
+    @foreach(var item in Model.ThongTinHoaDons)
+    {
+        <tr>
+            <td><img src="@item.SanPham.HinhAnh" title="@item.SanPham.TenSanPham" width="65" height="65" /></td>
+            <td>@item.SanPham.TenSanPham</td>
+            <td>@item.SanPham.SoLuong</td>
+            <td>@string.Format("{0:0,0 ₫}", item.SanPham.DonGia).Replace(",", ".")</td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Quay lại", "OrderDetail")
+</p>

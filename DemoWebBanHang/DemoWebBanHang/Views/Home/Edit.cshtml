@@ -1,0 +1,124 @@
+﻿@model DemoWebBanHang.Models.SanPham
+
+@{
+    ViewBag.Title = "Sửa sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Sửa sản phẩm</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID_SanPham)
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Danh mục</div>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.ID_DanhMuc, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownList("ID_DanhMuc", new List<SelectListItem>
+                 { new SelectListItem { Text = "Máy tính và phụ kiện", Value = "9"},
+                   new SelectListItem { Text = "Điện thoại và Phụ kiện", Value = "10"},
+                   new SelectListItem { Text = "Máy ảnh và máy quay", Value = "11"},
+                   new SelectListItem { Text = "Điện tử & văn phòng", Value = "12"},
+                   new SelectListItem { Text = "Tai nghe & loa", Value = "13"},
+                   new SelectListItem { Text = "Thiết bị game", Value = "14"},
+                   new SelectListItem { Text = "Đồ dùng nhà bếp", Value = "15"},
+                   new SelectListItem { Text = "Đồ dùng phòng ăn", Value = "16"},
+                   new SelectListItem { Text = "Đồ dùng phòng ngủ", Value = "17"},
+                   new SelectListItem { Text = "Thiết bị gia đình", Value = "18"},
+                   new SelectListItem { Text = "Nước hoa", Value = "19"},
+                   new SelectListItem { Text = "Trang điểm", Value = "20"},
+                   new SelectListItem { Text = "Chăm sóc da mặt nam", Value = "21"},
+                   new SelectListItem { Text = "Chăm sóc da mặt nữ", Value = "22"},
+                   new SelectListItem { Text = "Chăm sóc tóc", Value = "23"},
+                   new SelectListItem { Text = "Dụng cụ, phụ kiện làm đẹp", Value = "24"},
+                   new SelectListItem { Text = "Thực phẩm chức năng", Value = "25"},
+                   new SelectListItem { Text = "Vitamin & Thuốc", Value = "26"},
+                   new SelectListItem { Text = "Các loại máy", Value = "27"},
+                   new SelectListItem { Text = "Chăm sóc cá nhân", Value = "28"},
+                   new SelectListItem { Text = "Thực phẩm Organic", Value = "29"},
+                   new SelectListItem { Text = "Bánh kẹo", Value = "30"},
+                   new SelectListItem { Text = "Hoa quả", Value = "31"},
+                   new SelectListItem { Text = "Thực phẩm sấy khô", Value = "32"},
+                   new SelectListItem { Text = "Thực phẩm khác", Value = "33"},
+                   new SelectListItem { Text = "Đồ uống", Value = "34"},
+                   new SelectListItem { Text = "Đồng hồ nam", Value = "35"},
+                   new SelectListItem { Text = "Quần áo nam", Value = "36"},
+                   new SelectListItem { Text = "Giày dép nam", Value = "37"},
+                   new SelectListItem { Text = "Túi ví, phụ kiện nam", Value = "38"},
+                   new SelectListItem { Text = "Đồng hồ nữ", Value = "39"},
+                   new SelectListItem { Text = "Quần áo nữ", Value = "40"},
+                   new SelectListItem { Text = "Váy & Jumpsuit", Value = "41"},
+                   new SelectListItem { Text = "Giày dép", Value = "42"},
+                   new SelectListItem { Text = "Phụ kiện nữ", Value = "43"},
+                   new SelectListItem { Text = "Đồ cho mẹ & bé", Value = "44"},
+                   new SelectListItem { Text = "Sữa cho bé", Value = "45"},
+                   new SelectListItem { Text = "Sữa cho mẹ", Value = "46"},
+                   new SelectListItem { Text = "Sức khỏe cho mẹ & bé", Value = "47"},
+                   new SelectListItem { Text = "Đồ chơi", Value = "48"}
+                   }, "Chọn danh mục")
+                
+                @Html.ValidationMessageFor(model => model.ID_DanhMuc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Tên sản phẩm</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenSanPham, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenSanPham, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Mô tả</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.TextAreaFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Số lượng</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Hình ảnh</div>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.HinhAnh, new { htmlAttributes = new { @class = "form-control" } })*@
+                <img src="@Model.HinhAnh" width="100" height="100" />
+                <input type="file" name="uploadedfile" />
+                @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Đơn giá</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DonGia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DonGia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sửa" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại", "ListProduct")
+</div>

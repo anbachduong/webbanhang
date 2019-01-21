@@ -1,0 +1,68 @@
+﻿@using PagedList.Mvc; @*import this so we get our HTML Helper*@
+@using PagedList; 
+@model IPagedList<DemoWebBanHang.Models.HoaDon>
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Mã hóa đơn
+        </th>
+        <th>
+            Tên hóa đơn
+        </th>
+        <th>
+            Ngày thanh toán
+        </th>
+        <th>
+            Họ tên
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+            Tổng tiền
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_HoaDon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenHoaDon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayThanhToan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoDienThoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongTien)
+        </td>
+        <td>
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.ID_HoaDon })
+        </td>
+    </tr>
+}
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("OrderDetail", new { page }))

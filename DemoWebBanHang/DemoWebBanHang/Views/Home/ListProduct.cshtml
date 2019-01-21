@@ -1,0 +1,54 @@
+﻿@using PagedList.Mvc; @*import this so we get our HTML Helper*@
+@using PagedList; 
+@model IPagedList<DemoWebBanHang.Models.SanPham>
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách sản phẩm</h2>
+<p>
+
+    @Html.ActionLink("Thêm mới", "Create")
+
+</p>
+<div class="search1">
+    @using (Html.BeginForm("ListProduct", "Home", FormMethod.Get))
+    {
+        <div class="search1">
+            <input type="text" name="searchinglp" class="search-box1" style="width:500px" placeholder="Tìm kiếm trong danh sách sản phẩm...">
+            <input type="submit" class="search-box-btn1" value="Tìm kiếm">
+        </div>
+    }
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Mã sản phẩm</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Đơn giá</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col">Quản lý</th>
+        </tr>
+    </thead>
+    <tbody id="tblData">
+        @foreach (var sanpham in Model)
+        {
+            <tr>
+                <th scope="row">@sanpham.ID_SanPham</th>
+                <td>@sanpham.TenSanPham</td>
+                <td>@sanpham.SoLuong</td>
+                <td>@sanpham.DonGia</td>
+                <td><img src="@sanpham.HinhAnh" title="@sanpham.TenSanPham" width="30" height="30" /></td>
+                <td>
+                    <i class="fa fa-edit fa-fw"></i>@Html.ActionLink("Sửa", "Edit", new { id = sanpham.ID_SanPham })
+                    @*@Html.ActionLink("Xóa","Delete", new { id = Model.ID_SanPham },new { @onclick = "return DeleteConfirm()"})*@
+                    |<i class="fa fa-remove fa-fw"></i>@*<a href="#" class="RemoveLink" data-id="@Model.ID_SanPham" onclick="RemoveLink()">Xóa</a>*@
+                    @Html.ActionLink("Xoá", "Delete", new { id = sanpham.ID_SanPham })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("ListProduct", new {page,searchinglp=Request.QueryString["searchinglp"]}))
