@@ -32,7 +32,7 @@
           <Key>
             <PropertyRef Name="MaKH" />
           </Key>
-          <Property Name="MaKH" Type="int" Nullable="false" />
+          <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
           <Property Name="TaiKhoan" Type="nvarchar" MaxLength="50" />
           <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
@@ -172,7 +172,7 @@
           <Key>
             <PropertyRef Name="MaKH" />
           </Key>
-          <Property Name="MaKH" Type="Int32" Nullable="false" />
+          <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

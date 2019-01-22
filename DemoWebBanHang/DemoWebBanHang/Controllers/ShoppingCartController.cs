@@ -81,6 +81,7 @@ namespace DemoWebBanHang.Controllers
             hd.SoDienThoai = fc["SoDienThoai"];
             hd.TongTien = fc["TongTien"];
             hd.TenHoaDon = "Đơn hàng mới";
+            hd.MaKH = Convert.ToInt32(Session["UserID"]);
             de.HoaDons.Add(hd);
             de.SaveChanges();
             foreach(Item Item in cart)
@@ -109,7 +110,7 @@ namespace DemoWebBanHang.Controllers
         }
         public ActionResult OrderDetail(int? page)
         {
-            return View(de.HoaDons.OrderByDescending(x => x.ID_HoaDon).ToPagedList(page ?? 1, 3));
+            return View(de.HoaDons.OrderByDescending(x => x.ID_HoaDon).ToPagedList(page ?? 1, 5));
         }
         public ActionResult Details(int? id)
         {
@@ -123,6 +124,10 @@ namespace DemoWebBanHang.Controllers
                 return HttpNotFound();
             }
             return View(order);
+        }
+        public ActionResult OrderDetailUser()
+        {
+            return View(de.HoaDons.ToList());
         }
     }
 }

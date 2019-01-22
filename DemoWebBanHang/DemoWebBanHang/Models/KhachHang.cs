@@ -20,12 +20,12 @@ namespace DemoWebBanHang.Models
         {
             this.HoaDons = new HashSet<HoaDon>();
         }
-        
+    
         public int MaKH { get; set; }
         public string HoTen { get; set; }
-        [Required(ErrorMessage = "Tài khoản không được để trống")]
+        [Required(ErrorMessage = "Tài khoản không được bỏ trống")]
         public string TaiKhoan { get; set; }
-        [Required(ErrorMessage = "Mật khẩu không được để trống")]
+        [Required(ErrorMessage = "Mật khẩu không được bỏ trống")]
         public string MatKhau { get; set; }
         [EmailAddress(ErrorMessage = "Email không đúng")]
         public string Email { get; set; }

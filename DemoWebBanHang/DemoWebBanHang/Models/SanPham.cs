@@ -20,12 +20,12 @@ namespace DemoWebBanHang.Models
         {
             this.ThongTinHoaDons = new HashSet<ThongTinHoaDon>();
         }
-
-        [Required(ErrorMessage = "Mã sản phẩm không được để trống")]
+    
+        [Required(ErrorMessage = "Mã sản phẩm không được bỏ trống")]
         public int ID_SanPham { get; set; }
         public Nullable<int> ID_DanhMuc { get; set; }
         public Nullable<int> MaXuatXu { get; set; }
-        [Required(ErrorMessage = "Tên sản phẩm không được để trống")]
+        [Required(ErrorMessage = "Tên sản phẩm không được bỏ trống")]
         public string TenSanPham { get; set; }
         public string MoTa { get; set; }
         public Nullable<int> SoLuong { get; set; }

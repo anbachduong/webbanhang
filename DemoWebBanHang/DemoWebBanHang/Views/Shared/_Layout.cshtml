@@ -52,7 +52,7 @@
                             }
                             else
                             {
-                                <div class="shoppingcart"><a href="@Url.Action("Index","ShoppingCart")"><img src="~/Content/css/images/Icon-shopping-cart.png" width="30" height="30" /></a></div>
+                                <div class="shoppingcart"><a href="@Url.Action("Index", "ShoppingCart")"><img src="~/Content/css/images/Icon-shopping-cart.png" width="30" height="30" /></a></div>
                                 <span class="noti">@Session["CountCart"]</span>
                             }
                         }
@@ -63,10 +63,21 @@
                             }
                             else
                             {
-                                <div class="login"><text> Xin chào <b>@Session["UserName"].ToString()</b></text>    |   <a href="@Url.Action("Logout","Home")">Logout</a></div>
+                                <div class="login"><text> Xin chào <b>@Session["UserName"].ToString()</b></text>    |   <a href="@Url.Action("Logout", "Home")">Logout</a></div>
                             }
                         }
-</div>
+                        @{
+                            if (Session["UserID"] == null)
+                            {
+                                <div class="order">Theo dõi đơn hàng</div>
+                            }
+                            else
+                            {
+                                <div class="order">@Html.ActionLink("Theo dõi đơn hàng","OrderDetailUser","ShoppingCart")</div>
+                            }
+                        }
+                            
+                    </div>
                 <div class="search-box">
                     @using (Html.BeginForm("AllProduct", "Home", FormMethod.Get))
                     {

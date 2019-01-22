@@ -73,11 +73,8 @@
         <tr>
             <td><img src="@item.SanPham.HinhAnh" title="@item.SanPham.TenSanPham" width="65" height="65" /></td>
             <td>@item.SanPham.TenSanPham</td>
-            <td>@item.SanPham.SoLuong</td>
+            <td>@item.Quantity</td>
             <td>@string.Format("{0:0,0 ₫}", item.SanPham.DonGia).Replace(",", ".")</td>
         </tr>
     }
 </table>
-<p>
-    @Html.ActionLink("Quay lại", "OrderDetail")
-</p>

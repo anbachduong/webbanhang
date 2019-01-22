@@ -11,11 +11,8 @@ a:hover{
     width: 100%;
     background-image: url('images/Icon-Dang-ky-dang-nhap.png');
     padding: 0px 38px 0 45px;
-    -ms-background-size: 12%;
     background-size: 12%;
-    -ms-background-position: left center;
     background-position: left center;
-    -ms-background-repeat: no-repeat;
     padding: 10px 10px 10px 50px;
     background-position: 10px center;
     background-repeat: no-repeat;
@@ -61,7 +58,6 @@ a:hover{
     position: absolute;
     top: 15px;
     right: 115px;
-    -ms-border-radius: 9px;
     border-radius: 9px;
     font-size: 11px;
     color: #fff;
@@ -343,7 +339,6 @@ input.search-box-button {
     vertical-align: middle;
     font-size: 0;
     outline: 1px solid transparent;
-    -ms-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
@@ -385,7 +380,7 @@ input.search-box-button {
     width: 50px;
     text-align: center;
     background: rgba(244,164,96,.75);
-    right: -20px;
+    right:0;
     top: 50%;
     transform: translate(0,-50%);
     -moz-transform: translate(0,-50%);
@@ -425,4 +420,20 @@ input.search-box-button {
 }
 .sidebar{
     position:relative;
+}
+.order{
+    background-image: url('images/Icon-Theo-doi-don-hang.png');
+    padding: 0px 38px 0 45px;
+    background-size: 12%;
+    background-position: left center;
+    padding: 10px 10px 10px 50px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    line-height: 16px;
+    font-size: 14px;
+    height: 34px;
+    color: #f26522;
+    width: 200px;
+    float:right;
+    margin-top:20px
 }

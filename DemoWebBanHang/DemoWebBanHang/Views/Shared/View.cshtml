@@ -7,22 +7,20 @@
 
             <div class="caption">
                 <h3 class="product-name" style="margin-top:0">@Model.TenSanPham</h3>
-                <p class="price-index">@string.Format("{0:0,0 ₫}", Model.DonGia).Replace(",", ".")</p>
-                @*@{
-                    if (Model.SoLuong <= 0)
-                    {
-                        <div class="text-center">
-                            <a class="btn btn-warning btn-sm" href="@Url.Action("ProductDetail", "Home", new { ProductID = @Model.ID_SanPham })"> <i class="fa fa-info fa-fw"></i>  Chi tiết</a>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="text-center">
-                            <a class="btn btn-warning btn-sm" href="@Url.Action("ProductDetail", "Home", new { ProductID = @Model.ID_SanPham })"> <i class="fa fa-info fa-fw"></i>  Chi tiết</a>
-                            <a class="btn btn-success btn-sm" href="@Url.Action("OrderNow", "ShoppingCart", new { id = Model.ID_SanPham })"> <span class="glyphicon glyphicon-shopping-cart"></span>  Thêm vào giỏ </a>
-                        </div>
-                    }
-                }*@
+                @if (Model.SoLuong <= 0)
+                {
+                    <p class="price-index">
+                        @string.Format("{0:0,0 ₫}", Model.DonGia).Replace(",", ".")
+                        <span class="error">Hết hàng</span>
+                    </p>
+                }
+                else
+                {
+                    <p class="price-index">
+                        @string.Format("{0:0,0 ₫}", Model.DonGia).Replace(",", ".")
+                        <span class="error" style="color:green">(@Model.SoLuong)</span>
+                    </p>
+                }
             </div>
         </a>
     </div>
