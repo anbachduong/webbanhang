@@ -21,7 +21,7 @@ namespace DemoWebBanHang.Controllers
         }
         public ActionResult AllProduct(string searching)
         {
-            return View(db.SanPhams.Where(x => x.TenSanPham.Contains(searching) || searching == null).ToList());
+            return View(db.SanPhams.Where(x => x.TenSanPham.Contains(searching) || searching == null).OrderByDescending(x => x.NgayCapNhat).ToList());
         }
         public ActionResult Menu()
         {
@@ -38,7 +38,7 @@ namespace DemoWebBanHang.Controllers
             SanPham product = db.SanPhams.Where(x => x.ID_SanPham == ProductID).SingleOrDefault();
             return View(product);
         }
-        public ActionResult ListProduct(int? page,string searchinglp,string searchBy)
+        public ActionResult ListProduct(int? page, string searchinglp, string searchBy)
         {
             return View(db.SanPhams.Where(x => x.TenSanPham.Contains(searchinglp) || searchinglp == null).ToList().ToPagedList(page ?? 1, 10));
         }
@@ -189,6 +189,7 @@ namespace DemoWebBanHang.Controllers
                     {
                         Session["UserID"] = obj.MaKH.ToString();
                         Session["UserName"] = obj.HoTen.ToString();
+                        Session["User"] = obj.TaiKhoan.ToString();
                         Session["DiaChi"] = obj.DiaChi.ToString();
                         Session["SoDienThoai"] = obj.DienThoai.ToString();
                         return RedirectToAction("Index","Home");

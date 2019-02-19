@@ -18,8 +18,26 @@
     <!-- Custom Fonts -->
     <link href="~/Content/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="~/Content/css/main.css" rel="stylesheet" />
+    <style>
+        .order {
+            background-image: url('../../Content/css/images/Icon-Theo-doi-don-hang.png');
+            padding: 0px 38px 0 45px;
+            background-size: 12%;
+            background-position: left center;
+            padding: 10px 10px 10px 50px;
+            background-position: 10px center;
+            background-repeat: no-repeat;
+            line-height: 16px;
+            font-size: 14px;
+            height: 34px;
+            color: #f26522;
+            width: 200px;
+            float: right;
+            margin-top: 20px;
+        }
+    </style>
     @*Favicon website*@
-    <link rel="shortcut icon" type="image/png" href="~/Content/css/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/png" href="~/Content/css/images/Untitled.png" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -42,7 +60,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="\Home"><img width="100%" src="~/Content/images/Logo.png" /></a>
+                        <a class="navbar-brand" href="\Home"><img width="100%" src="~/Content/images/Untitled.png" /></a>
                     </div>
                         @{
                             if (Session["cart"] == null)
@@ -67,13 +85,9 @@
                             }
                         }
                         @{
-                            if (Session["UserID"] == null)
+                            if (Session["UserID"] != null)
                             {
-                                <div class="order">Theo dõi đơn hàng</div>
-                            }
-                            else
-                            {
-                                <div class="order">@Html.ActionLink("Theo dõi đơn hàng","OrderDetailUser","ShoppingCart")</div>
+                                <div class="order">@Html.ActionLink("Theo dõi đơn hàng", "OrderDetailUser", "ShoppingCart")</div>
                             }
                         }
                             
@@ -116,7 +130,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <a href="\Home"><img src="~/Content/images/Logo.png" /></a>
+                    <a href="\Home"><img src="~/Content/images/Untitled.png" /></a>
                     <p style="text-align:justify;font-style:italic;color:#fff">Là một công ty duy nhất trong các công ty nước ngoài hàng đầu tại Việt Nam có giấy phép tổng hợp về các dịch vụ logistic: dịch vụ vận chuyển trong nước và quốc tế bằng đường hàng không, đường biển và đường bộ, dịch vụ kho bãi (kho ngoại quan, CFS, kho thường ) . Cung cấp một dịch vụ chất lượng cao mà khách hàng có thể tin tưởng sử dụng.</p>
                     <a href="facebook.com"><i class="fa fa-facebook fa-fw"></i></a>
                     <a href="google.com"><i class="fa fa-google fa-fw"></i></a>
@@ -136,7 +150,7 @@
             </div>
         </div>
         <div class="modal-footer" style="text-align:center">
-            © 2019. Bản quyền thuộc về... . Thiết kế website - An Dương
+            © @DateTime.Now.Year Bản quyền thuộc về Rainshop . Thiết kế website - An Dương
         </div>
     </div>
     <!-- /#wrapper -->

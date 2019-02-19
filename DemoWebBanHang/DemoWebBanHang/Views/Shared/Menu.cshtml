@@ -21,13 +21,19 @@
                 }
             </li>
         }
-        <li class="has-sub">
-            <a>Quản trị</a>
-            <ul>
-                <li class="has-sub">@Html.ActionLink("Danh sách sản phẩm", "ListProduct", "Home")</li>
-                <li class="has-sub">@Html.ActionLink("Danh sách đơn hàng", "OrderDetail", "ShoppingCart")</li>
-            </ul>
-        </li>
-        
+        @if (Session["User"] == null)
+        {
+            
+        }
+        else if(Session["User"].ToString() == "admin")
+        {
+            <li class="has-sub">
+                <a>Quản trị</a>
+                <ul>
+                    <li class="has-sub">@Html.ActionLink("Danh sách sản phẩm", "ListProduct", "Home")</li>
+                    <li class="has-sub">@Html.ActionLink("Danh sách đơn hàng", "OrderDetail", "ShoppingCart")</li>
+                </ul>
+            </li>
+        }
     </ul>
 </div>
