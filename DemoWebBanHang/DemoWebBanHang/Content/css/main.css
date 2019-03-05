@@ -437,3 +437,25 @@ input.search-box-button {
     float:right;
     margin-top:20px
 }
+.videoslider object{
+    height:284px;width:100%
+}
+@media screen and (min-width:1367px){
+    div.container{
+        width:1600px;
+    }
+    .noti{
+        right:225px;
+    }
+    input.search-box-text{
+        width: 1555px !important;
+    }
+    .videoslider object{
+        height:467px;
+    }
+}
+@media screen and (min-width:768px){
+    input.search-box-text{
+        width:510px;
+    }
+}
