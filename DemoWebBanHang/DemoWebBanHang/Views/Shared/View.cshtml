@@ -1,6 +1,6 @@
 ﻿@model DemoWebBanHang.Models.SanPham
 
-<div class="col-md-3 product-zoom">
+<div class="col-md-3 col-sm-6 product-zoom">
     <div class="thumbnail" style="border: none">
         <a href="@Url.Action("ProductDetail", "Home", new { ProductID = @Model.ID_SanPham })">
             <div class="thumbnail"><img style="object-fit:cover;height:250px" src="@Model.HinhAnh" alt="@Model.TenSanPham"></div>

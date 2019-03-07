@@ -51,7 +51,7 @@
 <body>
     <div id="wrapper">
             <!-- Navigation -->
-            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; height:100px">
+            <nav class="navbar navbar-default navbar-static-top navbar1" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -60,7 +60,9 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
+
                         <a class="navbar-brand" href="\Home"><img width="100%" src="~/Content/images/Untitled.png" /></a>
+                        <a class="search-toggle" href="javascript:void(0)"><img id="img-search" src="~/Content/css/images/search-button.png" /></a>
                     </div>
                         @{
                             if (Session["cart"] == null)
@@ -137,13 +139,13 @@
                     <a href="twitter.com"><i class="fa fa-twitter fa-fw"></i></a>
                     <a href="youtube.com"><i class="fa fa-youtube fa-fw"></i></a>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-6">
                     <h4>Thông tin liên hệ</h4>
                     <p><i class="fa fa-location-arrow fa-fw"></i> B(361) HVKTQS Đ. Hoàng Quốc Việt, P. Nghĩa Đô, Q. Cầu Giấy, TP. Hà Nội.</p>
                     <p><i class="fa fa-phone fa-fw"></i>Tel:(84-024) 38432088 – 38432082</p>
                     <p><i class="fa fa-fax fa-fw"></i>Fax:(84-024) 38432038</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-6">
                     <h4>Fanpage</h4>
                     <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fquanaotuixachdepgiare%2F&tabs=timeline&width=340&height=200&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1144473832371678" width="100%" height="200" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                 </div>
@@ -169,28 +171,7 @@
     <script src="~/Content/dist/js/sb-admin-2.js"></script>
     @*Slick slider*@
     <script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-    <script>
-        $(window).load(function () {
-            $('.product').slick({
-                infinite: true,
-                slidesToShow: 4,
-                autoplay: true,
-                autoplayspeed:2000,
-                nextArrow: '<a href="#" class="next-produce"><i class="fa fa-angle-double-right"></i></a>',
-                prevArrow: '<a href="#" class="prev-produce"><i class="fa fa-angle-double-left"></i></a>'
-            });
-        });
-        $(window).load(function () {
-            $('.promotion').slick({
-                infinite: true,
-                slidesToShow: 1,
-                autoplay: true,
-                autoplayspeed: 5000,
-                nextArrow: '<a href="#" class="next-slick" style="float:right"><i class="fa fa-angle-right"></i></a>',
-                prevArrow: '<a href="#" class="prev-slick" style="float:right"><i class="fa fa-angle-left"></i></a>'
-            });
-        });
-    </script>
+    <script src="~/Content/js/main.js"></script>
     @*<script src="~/Scripts/tinymce.min.js"></script>
     <script>
         tinymce.init({ selector: 'textarea' });
